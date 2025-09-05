@@ -12,7 +12,7 @@
 
 ## How to View
 Just go on the website
-i will link it once its done
+[here](https://book-b25.pages.dev)
 
 ## License
 

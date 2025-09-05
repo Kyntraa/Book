@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Limits Book</title>
+  <meta name="description" content="A two-part personal story titled 'Fake Friends' presented as a small HTML book." />
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --paper: #fffdf8;
+      --ink: #222;
+      --muted: #6b6b6b;
+      --accent: #6b4eff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    [data-theme="dark"] {
+      --bg: #0c0c0e;
+      --paper: #141418;
+      --ink: #e6e6ea;
+      --muted: #9a9aa0;
+      --accent: #a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+    }
+
+    .wrap {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand { display: flex; align-items: baseline; gap: 10px; }
+    .brand h1 { font-size: clamp(20px, 3vw, 28px); margin: 0; letter-spacing: 0.5px; }
+    .brand .tagline { color: var(--muted); font-size: 0.95rem; }
+
+    .controls { display: flex; gap: 10px; }
+
+    button, .btn {
+      appearance: none;
+      border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+      background: color-mix(in oklab, var(--paper) 70%, var(--bg) 30%);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    button:hover, .btn:hover { transform: translateY(-1px); }
+    button:active, .btn:active { transform: translateY(0); }
+
+    .book {
+      background: var(--paper);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: clip;
+      border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+    }
+
+    .book-head { padding: 30px 28px 0; display: grid; gap: 18px; }
+    .toc { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0 0 6px 0; }
+    .toc a { text-decoration: none; padding: 8px 12px; border-radius: 999px; border: 1px dashed color-mix(in oklab, var(--ink) 18%, transparent); color: var(--ink); font-weight: 600; }
+
+    .page { padding: 24px 28px 36px; display: none; animation: fade .25s ease; }
+    .page.active { display: block; }
+
+    @keyframes fade { from { opacity: 0; transform: translateY(4px);} to { opacity:1; transform: none; } }
+
+    h2 { font-size: clamp(22px, 3.6vw, 34px); line-height: 1.2; margin: 0 0 8px 0; }
+    h3 { margin: 24px 0 8px; font-size: 1.15rem; color: var(--muted); }
+    p { margin: 10px 0; }
+    .muted { color: var(--muted); }
+    .rule { height: 1px; background: color-mix(in oklab, var(--ink) 12%, transparent); margin: 16px 0 8px; }
+
+    footer { color: var(--muted); font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; }
+    .chip { background: color-mix(in oklab, var(--accent) 18%, transparent); color: var(--ink); padding: 4px 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; }
+    .note { background: color-mix(in oklab, var(--accent) 12%, transparent); border-left: 4px solid var(--accent); padding: 12px 14px; border-radius: 10px; }
+    .nowrap { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <header>
+      <div class="brand">
+        <h1>Fake Friends</h1>
+        <span class="tagline">a short two-part story</span>
+      </div>
+      <div class="controls">
+      </div>
+    </header>
+
+    <main class="book">
+      <div class="book-head">
+        <nav>
+          <ul class="toc">
+            <li><a href="#cover" data-goto>Cover</a></li>
+            <li><a href="#part1" data-goto>Part 1</a></li>
+            <li><a href="#part2" data-goto>Part 2</a></li>
+            <li><a href="#afterword" data-goto>Afterword</a></li>
+          </ul>
+        </nav>
+        <div class="rule"></div>
+      </div>
+
+      <section class="page active" id="cover" data-page>
+        <h2>Fake Friends</h2>
+        <p class="muted">Told in two perspectives. But Completely diffrent behaivour.</p>
+        <p><span class="chip">Part 1</span> · <span class="chip">Part 2</span></p>
+        <div class="note">Use the table of contents, ← / → keys, or buttons below. Print to save as PDF.</div>
+        <div class="nav">
+          <span></span>
+          <a class="btn" href="#part1" data-goto>Start reading →</a>
+        </div>
+      </section>
+
+      <section class="page" id="part1" data-page>
+        <h2>Part 1</h2>
+        <p>I had a best friend who would often talk badly about me to my friends. We had an imaginary world on a piece of paper where we had countries, and I was sort of part of a party, but it was just my best friend and me. We had secret weapons there and other secret stuff. The conflict started after he and my other friend had their "very" strong weapon, and they were flexing it to everyone. They told each other the secret weapon they had, but not me, and I asked them to tell me, but my best friend told him not to, that it's just their secret. I was not happy about that, so I went home and went to sleep. When I woke up and went to school, all my friends stopped hanging out and were distant. When I asked them why they'd just ignore me. When I got home, I got more calls from my former friends saying they don't want to be friends with me. After a while of arguing with them, I hung up and accepted it. After a few days, I made a friend, he was very chill and didn't care, just because of a random made-up game. Later, I found out from a neutral friend why they kicked me out of their friend group: it was because I had leaked their secret weapons. Which was completely made up, but I didn't care because their true colors were shown. Thank you for reading part 2, coming out later.</p>
+        <div class="nav">
+          <a class="btn" href="#cover" data-goto>← Back</a>
+          <a class="btn" href="#part2" data-goto>Next →</a>
+        </div>
+      </section>
+
+      <section class="page" id="part2" data-page>
+        <h2>Part 2</h2>
+        <p>So after he got kicked out, I was friends with him in 5th grade, great! Yeah so the kept arguing and arguing about papers and so i stepped in tried to separate them until i got "roasted" by oli birs "best Friend" who will we call Lazar and lazar was from ukraine he sucks anyways he made fun of my hair and stuff how i look and i didnt give a yk what so after that his little friend who will call mark well lazar used to make fun of mark but if you made fun of mark well lets just say lazar would not get off your back and kept roasting you thats all that little child can do.</p>
+        <p>Now let's rewind to 1 September???? 6th grade it is i step in and... mark nowhere to be found he went to diffrent school i was happy and lazar glared at me since he couldnt roast him anymore well as the teacher read the names who went away she say oli_bir now i knew that already but lazar started laughing at me yeah nothing i didnt mind but earlier back in 5th grade at the end he would laugh at me not knowing to swim not knowing to ride a bycicle and laughed at me being fat spoiler alert: hes wrong and then he said my mama is fat thats just wrong.</p>
+        <p>So, forward back to grade 6, he laughed at me and started saying I would be lonely or something, and he's right since everyone hates me there for laughing, that mark left the school, but do I care? No.</p>
+        <p>Fast forward to the 5th of September???? Our class went on a long walk, 12 KM, and now we are coming back. Lazar and his stupid, disgusting friend, called Marcus, we will call him that, started making some pig noises I didn't mind, and then Lazar said, "THIS IS YOUR NATIONAL ANTHEM." I said what? And he started making pig noises i shrugged my head and kept moving and then they used some words at me you made mcdonalds go bankrupt your so fat you put calories into your self it made me angry okay at that moment i wanted to punch him to make him learn his lesson and thats all now i can release part 3 when i can publish more info.</p>
+        <p><strong>SINCE MANY OF THE THINGS I M GATEKEEPING ARE SENSITIVE, BE SURE TO CHECK OUT THIS PAGE. The next chapter is maybe gonna be wild?</strong></p>
+        <div class="nav">
+          <a class="btn" href="#part1" data-goto>← Back</a>
+          <a class="btn" href="#afterword" data-goto>Next →</a>
+        </div>
+      </section>
+
+      <section class="page" id="afterword" data-page>
+        <h2>Afterword</h2>
+        <p class="muted">Thanks for reading.</p>
+        <div class="nav">
+          <a class="btn" href="#part2" data-goto>← Back</a>
+          <span></span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Fake Friends · Single-file HTML Book</span>
+      <span class="muted">Press ← / → to flip pages</span>
+    </footer>
+  </div>
+
+  <script>
+    const pages = [...document.querySelectorAll('[data-page]')];
+    const links = [...document.querySelectorAll('[data-goto]')];
+
+    function show(id) {
+      pages.forEach(p => p.classList.toggle('active', p.id === id));
+      try { history.replaceState({}, '', '#' + id); } catch (e) { location.hash = id; }
+    }
+
+    links.forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      show(a.getAttribute('href').slice(1));
+    }));
+
+    addEventListener('keydown', e => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const idx = pages.findIndex(p => p.classList.contains('active'));
+      if (e.key === 'ArrowLeft' && idx > 0) show(pages[idx-1].id);
+      if (e.key === 'ArrowRight' && idx < pages.length-1) show(pages[idx+1].id);
+    });
+
+    show(location.hash.slice(1) || 'cover');
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.setAttribute('data-theme', 'dark');
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
